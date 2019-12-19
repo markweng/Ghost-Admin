@@ -23,6 +23,7 @@ export default Component.extend({
     showDeleteTagModal: () => {},
 
     scratchName: boundOneWay('tag.name'),
+    scratchParent: boundOneWay('tag.parent'),
     scratchSlug: boundOneWay('tag.slug'),
     scratchDescription: boundOneWay('tag.description'),
     scratchMetaTitle: boundOneWay('tag.metaTitle'),

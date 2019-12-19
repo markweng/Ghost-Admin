@@ -2,20 +2,27 @@
 <div class="pa5 pt4 br4 shadow-1 bg-grouped-table mt2 flex flex-column flex-row-ns items-start justify-between gh-tag-basic-settings-form">
     <div class="order-1 flex flex-column items-start mr5 w-100 w-50-m w-two-thirds-l">
         {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="name"}}
-        <label for="tag-name">Name</label>
-        {{gh-text-input
+        <label for="tag-name">一级标签</label>
+         {{gh-text-input
+                    id="tag-parent"
+                    name="parent"
+                    value=(readonly scratchParent)
+                    tabindex="6"
+                    input=(action (mut scratchParent) value="target.value")
+                    focus-out=(action 'setProperty' 'parent' scratchParent)}}                  
+        {{gh-error-message errors=tag.errors property="name"}}
+        {{/gh-form-group}}
+        {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="name"}}
+        <label for="tag-parent">二级标签</label>
+         {{gh-text-input
                     id="tag-name"
                     name="name"
                     value=(readonly scratchName)
                     tabindex="1"
                     input=(action (mut scratchName) value="target.value")
-                    focus-out=(action 'setProperty' 'name' scratchName)}}
-        <p class="description">Start with # to create internal tags. <a
-                href="https://ghost.org/docs/concepts/tags/#internal-tag" target="_blank" rel="noreferrer">Learn
-                more</a></p>
+                    focus-out=(action 'setProperty' 'name' scratchName)}}                  
         {{gh-error-message errors=tag.errors property="name"}}
         {{/gh-form-group}}
-
         {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="slug"}}
         <label for="tag-slug">Slug</label>
         {{gh-text-input
