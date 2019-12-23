@@ -16,6 +16,7 @@ export default Component.extend({
     id: alias('tag.id'),
     slug: alias('tag.slug'),
     name: alias('tag.name'),
+    parent: alias('tag.parent'),
     isInternal: alias('tag.isInternal'),
     description: alias('tag.description'),
     postsCount: alias('tag.count.posts'),
