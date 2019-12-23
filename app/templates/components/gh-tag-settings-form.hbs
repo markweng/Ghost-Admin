@@ -1,8 +1,8 @@
 <h4 class="midlightgrey f-small fw5 ttu">Basic settings</h4>
 <div class="pa5 pt4 br4 shadow-1 bg-grouped-table mt2 flex flex-column flex-row-ns items-start justify-between gh-tag-basic-settings-form">
     <div class="order-1 flex flex-column items-start mr5 w-100 w-50-m w-two-thirds-l">
-        {{#gh-form-group errors=this.tag.errors hasValidated=this.tag.hasValidated property="parent"}}
-       <label for="tag-name">一级标签</label>
+        {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="parent"}}
+        <label for="tag-name">一级标签</label>
          {{gh-text-input
                     id="tag-parent"
                     name="parent"
@@ -10,7 +10,8 @@
                     tabindex="6"
                     input=(action (mut scratchParent) value="target.value")
                     focus-out=(action 'setProperty' 'parent' scratchParent)}}                  
-        {{gh-error-message errors=tag.errors property="name"}}
+
+        {{gh-error-message errors=tag.errors property="parent"}}
         {{/gh-form-group}}
         {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="name"}}
         <label for="tag-name">二级标签</label>
@@ -25,7 +26,7 @@
         {{gh-error-message errors=tag.errors property="name"}}
         {{/gh-form-group}}
 
-        {{#gh-form-group errors=this.tag.errors hasValidated=this.tag.hasValidated property="slug"}}
+        {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="slug"}}
         <label for="tag-slug">Slug</label>
         {{gh-text-input
                     value=this.scratchTag.slug

@@ -18,6 +18,17 @@ export default Component.extend({
     // Allowed actions
     setProperty: () => {},
 
+    showDeleteTagModal: () => {},
+
+    scratchName: boundOneWay('tag.name'),
+    scratchParent: boundOneWay('tag.parent'),
+    scratchSlug: boundOneWay('tag.slug'),
+    scratchDescription: boundOneWay('tag.description'),
+    scratchMetaTitle: boundOneWay('tag.metaTitle'),
+    scratchMetaDescription: boundOneWay('tag.metaDescription'),
+
+    isMobile: reads('mediaQueries.maxWidth600'),
+
     title: computed('tag.isNew', function () {
         if (this.get('tag.isNew')) {
             return 'New tag';
