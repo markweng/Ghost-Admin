@@ -30,7 +30,7 @@
                     {{svg-jar "idea" class="w7 h7 fill-blue"}}
                     <p class="ma0 pa0 ml1 nudge-top--2">
                         {{infoMessage}}
-                        <button type="button" class="blue fw5" {{action (mut infoMessage "")}}>Got it</button>
+                        <button type="button" class="blue fw5" {{action (mut infoMessage "")}}>明白</button>
                     </p>
                 </div>
             </div>
@@ -68,11 +68,11 @@
         --}}
         {{gh-koenig-editor
             title=(readonly post.titleScratch)
-            titlePlaceholder=(concat (capitalize post.displayName) " Title")
+            titlePlaceholder=(concat (capitalize post.displayName) " 标题")
             onTitleChange=(action "updateTitleScratch")
             onTitleBlur=(action (perform saveTitle))
             body=(readonly post.scratch)
-            bodyPlaceholder=(concat "Begin writing your " post.displayName "...")
+            bodyPlaceholder=(concat "开始编辑您的" post.displayName "...")
             bodyAutofocus=shouldFocusEditor
             onBodyChange=(action "updateScratch")
             headerOffset=editor.headerHeight
@@ -87,7 +87,6 @@
             <div class="midgrey-l2 {{if editor.headerClass "f-supersmall pl2 pr2" "f8 pl4 pr3"}} fw4">
                 {{pluralize wordCount.wordCount "word"}}
             </div>
-            <a href="https://ghost.org/faq/using-the-editor/" class="flex {{if editor.headerClass "pa2" "pa3"}}" target="_blank">{{svg-jar "help" class="w4 h4 stroke-midgrey-l2"}}</a>
         </div>
 
     {{/gh-editor}}

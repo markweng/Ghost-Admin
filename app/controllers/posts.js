@@ -5,30 +5,24 @@ import {get} from '@ember/object';
 import {inject as service} from '@ember/service';
 
 const TYPES = [{
-    name: 'All posts',
+    name: '所有品牌',
     value: null
 }, {
-    name: 'Draft posts',
+    name: '草稿',
     value: 'draft'
 }, {
-    name: 'Published posts',
+    name: '公开的',
     value: 'published'
-}, {
-    name: 'Scheduled posts',
-    value: 'scheduled'
-}, {
-    name: 'Featured posts',
-    value: 'featured'
 }];
 
 const ORDERS = [{
-    name: 'Newest',
+    name: '最新的',
     value: null
 }, {
-    name: 'Oldest',
+    name: '最旧的',
     value: 'published_at asc'
 }, {
-    name: 'Recently updated',
+    name: '最近更新的',
     value: 'updated_at desc'
 }];
 
@@ -84,7 +78,7 @@ export default Controller.extend({
             .sort((tagA, tagB) => tagA.name.localeCompare(tagB.name, undefined, {ignorePunctuation: true}));
         let options = tags.toArray();
 
-        options.unshiftObject({name: 'All tags', slug: null});
+        options.unshiftObject({name: '所有类型', slug: null});
 
         return options;
     }),

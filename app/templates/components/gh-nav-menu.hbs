@@ -62,7 +62,7 @@
                 <li class="gh-nav-list-h">网站设置</li>
                 <li>{{#link-to "settings.general" data-test-nav="settings"}}{{svg-jar "settings"}}基础设置{{/link-to}}</li>
                 <li>{{#link-to "settings.design" data-test-nav="design"}}{{svg-jar "paintbrush"}}导航配置{{/link-to}}</li>
-                <li>{{#link-to "settings.code-injection" data-test-nav="code-injection"}}{{svg-jar "brackets"}}高级设置{{/link-to}}</li>
+                {{!-- {{!-- <li>{{#link-to "settings.code-injection" data-test-nav="code-injection"}}{{svg-jar "brackets"}}高级设置{{/link-to}}</li> --}}
                 {{!-- <li>{{#link-to "settings.integrations" current-when=isIntegrationRoute data-test-nav="integrations"}}{{svg-jar "modules"}}Integrations{{/link-to}}</li> --}}
                 <li class="relative">
                     <button class="gh-secondary-action" title="Toggle Night shift" {{action (toggle "nightShift" this.feature)}}>

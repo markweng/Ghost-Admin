@@ -1,6 +1,6 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header post-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Pages</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>页面</h2>
         <section class="view-actions">
             <div class="gh-contentfilter">
                 {{#unless session.user.isContributor}}
@@ -21,25 +21,6 @@
                 {{/power-select}}
                 {{/unless}}
 
-                {{#unless session.user.isAuthorOrContributor}}
-                {{#power-select
-                    selected=selectedAuthor
-                    options=availableAuthors
-                    searchField="name"
-                    onchange=(action "changeAuthor")
-                    tagName="div"
-                    classNames=authorClassNames
-                    triggerClass="gh-contentfilter-menu-trigger"
-                    dropdownClass="gh-contentfilter-menu-dropdown"
-                    searchPlaceholder="Search authors"
-                    matchTriggerWidth=false
-                    data-test-author-select=true
-                    as |author|
-                }}
-                    {{author.name}}
-                {{/power-select}}
-                {{/unless}}
-
                 {{#unless session.user.isContributor}}
                 {{#power-select
                     selected=selectedTag
@@ -56,7 +37,7 @@
                     data-test-tag-select=true
                     as |tag|
                 }}
-                    {{tag.name}}
+                   {{tag.parent}} {{tag.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -77,7 +58,7 @@
                 {{/power-select}}
             </div>
 
-            {{#link-to "editor.new" "page" class="gh-btn gh-btn-green" data-test-new-page-button=true}}<span>New page</span>{{/link-to}}
+            {{#link-to "editor.new" "page" class="gh-btn gh-btn-green" data-test-new-page-button=true}}<span>新建</span>{{/link-to}}
         </section>
     </GhCanvasHeader>
 
@@ -86,9 +67,9 @@
             {{#if postsInfinityModel}}
                 <li class="gh-list-row header">
                     <div class="gh-list-header no-padding">{{!--Favorite indicator column: no header--}}</div>
-                    <div class="gh-list-header gh-posts-title-header">Title</div>
-                    <div class="gh-list-header gh-posts-status-header">Status</div>
-                    <div class="gh-list-header gh-posts-lastupdate-header">Last update</div>
+                    <div class="gh-list-header gh-posts-title-header">标题</div>
+                    <div class="gh-list-header gh-posts-status-header">状态</div>
+                    <div class="gh-list-header gh-posts-lastupdate-header">最后更新</div>
                 </li>
             {{/if}}
 
@@ -101,14 +82,14 @@
                     <div class="no-posts">
                         {{#if showingAll}}
                             {{svg-jar "pages-placeholder" class="gh-pages-placeholder"}}
-                            <h3>You haven't created any pages yet!</h3>
+                            <h3>您好没有创建页面!</h3>
                             {{#link-to "editor.new" "page" class="gh-btn gh-btn-green gh-btn-lg"}}
-                                <span>Create a new page</span>
+                                <span>新建一个页面</span>
                             {{/link-to}}
                         {{else}}
-                            <h3>No pages match the current filter</h3>
+                            <h3>没有过滤到结果</h3>
                             {{#link-to "pages" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
-                                <span>Show all pages</span>
+                                <span>展示所有页面</span>
                             {{/link-to}}
                         {{/if}}
                     </div>

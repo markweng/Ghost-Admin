@@ -1,6 +1,6 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header post-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Posts</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>品牌</h2>
         <section class="view-actions">
             <div class="gh-contentfilter">
                 {{#unless session.user.isContributor}}
@@ -21,24 +21,7 @@
                 {{/power-select}}
                 {{/unless}}
 
-                {{#unless session.user.isAuthorOrContributor}}
-                {{#power-select
-                    selected=selectedAuthor
-                    options=availableAuthors
-                    searchField="name"
-                    onchange=(action "changeAuthor")
-                    tagName="div"
-                    classNames=authorClassNames
-                    triggerClass="gh-contentfilter-menu-trigger"
-                    dropdownClass="gh-contentfilter-menu-dropdown"
-                    searchPlaceholder="Search authors"
-                    matchTriggerWidth=false
-                    data-test-author-select=true
-                    as |author|
-                }}
-                    {{author.name}}
-                {{/power-select}}
-                {{/unless}}
+               
 
                 {{#unless session.user.isContributor}}
                 {{#power-select
@@ -50,13 +33,13 @@
                     classNames=tagClassNames
                     triggerClass="gh-contentfilter-menu-trigger"
                     dropdownClass="gh-contentfilter-menu-dropdown"
-                    searchPlaceholder="Search tags"
+                    searchPlaceholder="搜索"
                     matchTriggerWidth=false
                     optionsComponent="power-select-vertical-collection-options"
                     data-test-tag-select=true
                     as |tag|
                 }}
-                    {{tag.name}}
+                   {{tag.parent}} {{tag.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -77,7 +60,7 @@
                 {{/power-select}}
             </div>
 
-            {{#link-to "editor.new" "post" class="gh-btn gh-btn-green" data-test-new-post-button=true}}<span>New post</span>{{/link-to}}
+            {{#link-to "editor.new" "post" class="gh-btn gh-btn-green" data-test-new-post-button=true}}<span>新建</span>{{/link-to}}
         </section>
     </GhCanvasHeader>
 
@@ -86,9 +69,9 @@
             {{#if postsInfinityModel}}
                 <li class="gh-list-row header">
                     <div class="gh-list-header no-padding">{{!--Favorite indicator column: no header--}}</div>
-                    <div class="gh-list-header gh-posts-title-header">Title</div>
-                    <div class="gh-list-header gh-posts-status-header">Status</div>
-                    <div class="gh-list-header gh-posts-lastupdate-header">Last update</div>
+                    <div class="gh-list-header gh-posts-title-header">标题</div>
+                    <div class="gh-list-header gh-posts-status-header">状态</div>
+                    <div class="gh-list-header gh-posts-lastupdate-header">最后更新时间</div>
                 </li>
             {{/if}}
 
@@ -101,14 +84,14 @@
                 <div class="no-posts">
                     {{#if showingAll}}
                         {{svg-jar "posts-placeholder" class="gh-posts-placeholder"}}
-                        <h3>You haven't written any posts yet!</h3>
+                        <h3>你还没有创建任何品牌!</h3>
                         {{#link-to "editor.new" "post" class="gh-btn gh-btn-green gh-btn-lg"}}
-                            <span>Write a new post</span>
+                            <span>新建一个品牌</span>
                         {{/link-to}}
                     {{else}}
-                        <h3>No posts match the current filter</h3>
+                        <h3>没有匹配到当前的过滤</h3>
                         {{#link-to "posts" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
-                            <span>Show all posts</span>
+                            <span>展示所有品牌</span>
                         {{/link-to}}
                     {{/if}}
                 </div>
